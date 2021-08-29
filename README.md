@@ -3,7 +3,15 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-Database: postgres
+### **Database:** postgres
+
+In project, I use `validationSchema` of `ConfigModule` to validate enviroment variable
+
+### **Auth:** Using jwt token
+### **Testing:** Using jest
+
+In project, I have just only implemented tests for `tasks.service.ts` in `tasks.service.spec.ts`(src/tasks/__tests__/tasks.service.spec.ts)
+
 
 ## Installation
 
@@ -15,25 +23,19 @@ $ yarn
 
 ```bash
 # development
-$ yarn run start
+$ yarn start
 
 # watch mode
-$ yarn run start:dev
+$ yarn start:dev
 
 # production mode
-$ yarn run start:prod
+$ yarn start:prod
 ```
 
 ## Test
 
 ```bash
 # unit tests
-$ yarn run test
+$ yarn test
 
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
-```
 
