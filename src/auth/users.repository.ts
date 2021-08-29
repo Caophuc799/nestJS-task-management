@@ -1,6 +1,7 @@
 import {
   ConflictException,
   InternalServerErrorException,
+  Logger,
 } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { EntityRepository, Repository } from 'typeorm';
@@ -9,6 +10,7 @@ import { User } from './user.entity';
 
 @EntityRepository(User)
 export class UsersRepository extends Repository<User> {
+  private logger = new Logger('UsersRepository', { timestamp: true });
   async createUser(authCredentialsDto: AuthCredentialsDto): Promise<void> {
     const { username, password } = authCredentialsDto;
 
@@ -23,6 +25,10 @@ export class UsersRepository extends Repository<User> {
     try {
       await this.save(user);
     } catch (error) {
+      this.logger.error(
+        `Failed to create user. The reason is ${error.message}`,
+        error.stack,
+      );
       if (error.code === '23505') {
         throw new ConflictException('Username already exists');
       }

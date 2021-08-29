@@ -8,6 +8,7 @@ import {
   Put,
   Query,
   UseGuards,
+  Logger,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { GetUser } from 'src/auth/get-user.decorator';
@@ -21,6 +22,7 @@ import { TasksService } from './tasks.service';
 @Controller('tasks')
 @UseGuards(AuthGuard())
 export class TasksController {
+  private logger = new Logger('TaskController');
   constructor(private tasksService: TasksService) {}
 
   @Get()
@@ -41,6 +43,7 @@ export class TasksController {
     @Body() createTaskDto: CreateTaskDto,
     @GetUser() user: User,
   ): Promise<Task> {
+    this.logger.verbose(`User ${user.username} is creating a new task`);
     return this.tasksService.createTask(createTaskDto, user);
   }
 
