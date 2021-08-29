@@ -10,7 +10,7 @@ In project, I use `validationSchema` of `ConfigModule` to validate enviroment va
 ### **Auth:** Using jwt token
 ### **Testing:** Using jest
 
-In project, I have just only implemented tests for `tasks.service.ts` in `tasks.service.spec.ts`(src/tasks/__tests__/tasks.service.spec.ts)
+In project, I have just only implemented tests for `tasks.service.ts` in `tasks.service.spec.ts`(src/tasks/\__tests\__/tasks.service.spec.ts)
 
 
 ## Installation
