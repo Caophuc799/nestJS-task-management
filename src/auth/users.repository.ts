@@ -27,7 +27,7 @@ export class UsersRepository extends Repository<User> {
     } catch (error) {
       this.logger.error(
         `Failed to create user. The reason is ${error.message}`,
-        error.stack,
+        // error.stack,
       );
       if (error.code === '23505') {
         throw new ConflictException('Username already exists');
